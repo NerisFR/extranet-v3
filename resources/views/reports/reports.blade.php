@@ -11,7 +11,6 @@
 
 <link href="{{ asset('plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css" >
 
-
 <div class="box box-primary">
     <div class="box-header with-border">
       <h3 class="col-xs-6 box-title">Mes notes de syntheses</h3>

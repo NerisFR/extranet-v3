@@ -64,6 +64,7 @@ Route::group(['middleware' => 'web'], function () {
 
 		Route::resource('region', 'RegionController');
 
+		Route::resource('tdbbyhours', 'TdbbyhoursController');
 
     });
 });
