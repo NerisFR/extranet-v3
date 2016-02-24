@@ -1,0 +1,61 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateReportsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('reports', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('jour');
+            $table->string('arrivee');
+            $table->string('depart');
+            $table->string('type_heure');
+            $table->decimal('tps_total',5,2);
+            $table->decimal('tps_adm',5,2);
+            $table->decimal('tps_maint',5,2);
+            $table->decimal('tps_parc',5,2);
+            $table->decimal('tps_prix',5,2);
+            $table->decimal('tps_inst',5,2);
+            $table->decimal('tps_assist',5,2);
+            $table->decimal('tps_form',5,2);
+            $table->decimal('tps_proj',5,2);
+            $table->decimal('tps_dev',5,2);
+            $table->decimal('tps_reunion',5,2);
+            $table->decimal('tps_dep',5,2);
+            $table->decimal('tps_ctrl',5,2);
+            $table->decimal('tps_autre',5,2);
+            $table->enum('ctrl_log',array('true',''));
+            $table->enum('ctrl_hdd',array('true',''));
+            $table->enum('ctrl_raid',array('true',''));
+            $table->enum('ctrl_maj_os',array('true',''));
+            $table->enum('ctrl_maj_hard',array('true',''));
+            $table->enum('ctrl_maj_soft',array('true',''));
+            $table->enum('ctrl_backup',array('true',''));
+            $table->enum('volum_backup',array('true',''));
+            $table->enum('maj_backup',array('true',''));
+            $table->enum('ctrl_antivirus',array('true',''));
+            $table->enum('maj_antivirus',array('true',''));
+            $table->longText('commentaire');
+            $table->integer('id_affect');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('reports');
+    }
+}

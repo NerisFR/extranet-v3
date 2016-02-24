@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateContratsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('clients', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('numero');
+            $table->date('signature');
+            $table->decimal('duree', 5, 0);
+            $table->date('demarrage');
+            $table->date('date_fin_mission');
+            $table->enum('marche',array('true',''));
+            $table->decimal('preavis',5,0);
+            $table->enum('reconduction',array('true',''));
+            $table->decimal('volume',5,2);
+            $table->decimal('base_sem',2,0);
+            $table->decimal('nb_mois',3,0);
+            $table->decimal('rythmicite',3,0);
+            $table->string('description');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('clients');
+    }
+}
