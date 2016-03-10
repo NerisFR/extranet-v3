@@ -160,11 +160,12 @@
     <!-- jQuery UI 1.11.4 -->
 
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ asset('js/reports.js') }}"></script>
+
     <!-- datepicker -->
     <script type="text/javascript" src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/datepicker/locales/bootstrap-datepicker.fr.js') }}"></script>
   
-  
+    <script type="text/javascript" src="{{ asset('js/reports.js') }}"></script>
 
 
 <script type="text/javascript">

@@ -49,9 +49,8 @@
         var contrat_id = $('.contrat_tdbh').val();
         var list_annee;
         $.ajax({
-            type: "POST",
-            url: "forms/tdb/hour/req_tdb_heures_annee.php",
-            data: "&contrat_id="+contrat_id, // on envoie $_GET['go']
+            type: "GET",
+            url: APP_URL + "/contrat/getAnneeContrat/" + contrat_id,
             datatype: "json", // on veut un retour JSON
             success: function(data) {
                 $('.annee_tdbh').empty();
@@ -71,18 +70,17 @@
         var contrat_id = $('.contrat_tdbh').val();
         var annees = $('.annee_tdbh').val();
         $.ajax({
-            type: "POST",
-            url: "forms/tdb/hour/req_tdb_heures.php",
-            data: "collab_id="+collab_id+"&client_id="+client_id+"&contrat_id="+contrat_id+"&annees="+annees, // on envoie $_GET['go']
-            datatype: "html", // on veut un retour HTML
+            type: "GET",
+            url: APP_URL + "/tdbbyhours/getGraphHour/" + contrat_id + "/" + annees,
+            datatype: "html",
             success: function(data) {
                 $('.afficher').html(data);
-                $('#icon-hour').removeClass('fa-chevron-down');
-                $('#icon-hour').addClass('fa-chevron-up');
-                $('#table-hour').addClass('hide');
-                $('#table-bilan-hour').addClass('hide');
-                $('#icon-bilan-hour').removeClass('fa-chevron-down');
-                $('#icon-bilan-hour').addClass('fa-chevron-up');
+                // $('#icon-hour').removeClass('fa-chevron-down');
+                // $('#icon-hour').addClass('fa-chevron-up');
+                // $('#table-hour').addClass('hide');
+                // $('#table-bilan-hour').addClass('hide');
+                // $('#icon-bilan-hour').removeClass('fa-chevron-down');
+                // $('#icon-bilan-hour').addClass('fa-chevron-up');
             }
         });
         

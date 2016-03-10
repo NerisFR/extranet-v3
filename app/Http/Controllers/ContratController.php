@@ -58,6 +58,88 @@ class ContratController extends Controller {
    *
    * @return Response
    */
+  public function getAnneeContrat($idcontrat)
+  {
+    $contrats = DB::table('contrats')
+      ->where('contrats.id', '=', $idcontrat)
+      ->select('contrats.demarrage', 'contrats.base_sem', 'contrats.nb_mois')
+      ->get();
+    $demarrage = $contrats[0]->demarrage;
+    $base_sem = $contrats[0]->base_sem;
+    $nb_mois = $contrats[0]->nb_mois;
+    $annee_dem = intval(date("Y", strtotime($demarrage)));
+    $mois_dem = intval(date("m", strtotime($demarrage)));
+
+    $mois_courant = intval(date("m"));
+
+    //si le mois de démarrage est janvier
+    if($mois_dem == 1){
+        $j=0;
+        for($i=date("Y");$i>=$annee_dem;$i--){
+            $annees[$j]=$i;
+            $j++;
+        }
+    }
+    //si le mois de démarrage est sup. au mois courant (annee N-1 et N)
+    elseif($mois_dem > $mois_courant){
+        if($nb_mois <> 12){
+            $j=0;
+            if(($mois_dem+$nb_mois) <= 13){
+                for($i=date("Y");$i>=$annee_dem;$i--){
+                    $annees[$j]=$i;
+                    $j++;
+                }
+            }
+            else{
+                for($i=date("Y");$i>=$annee_dem;$i--){
+                    $annees[$j]=($i-1)."-".$i;
+                    $j++;
+                }
+            } 
+        }
+        else{
+            $j=0;
+            for($i=date("Y");$i>=$annee_dem;$i--){
+                $annees[$j]=($i-1)."-".$i;
+                $j++;
+            } 
+        }
+    }
+    //si le mois de démarrage est inf. au mois courant (annee N et N+1)
+    else {
+        if($nb_mois <> 12){
+            $j=0;
+            if(($mois_dem+$nb_mois) <= 13){
+
+                for($i=date("Y");$i>=$annee_dem;$i--){
+                    $annees[$j]=$i;
+                    $j++;
+                }
+            }
+            else{
+                for($i=date("Y");$i>=$annee_dem;$i--){
+                    $annees[$j]=$i."-".($i+1);
+                    $j++;
+                }
+            }
+        }
+        else{
+            $j=0;
+            for($i=date("Y");$i>=$annee_dem;$i--){
+                $annees[$j]=$i."-".($i+1);
+                $j++;
+            } 
+        }
+    }
+    
+  return json_encode($annees);
+  }
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return Response
+   */
   public function getByClient($idclient)
   {
     $contrats = DB::table('contrats')

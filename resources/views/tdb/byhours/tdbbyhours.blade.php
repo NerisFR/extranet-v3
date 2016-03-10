@@ -71,6 +71,7 @@
 <!-- jQuery UI 1.11.4 -->
 
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('plugins/canvasjs-1.6.2/canvasjs.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('js/tdbbyhours.js') }}"></script>
 

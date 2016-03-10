@@ -225,7 +225,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{ asset('/tdbbyhours') }}"><i class="fa fa-circle-o"></i> Suivi des heures</a></li>
-                <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Suivi des taches</a></li>
+                <li><a href="{{ asset('/tdbbytasks') }}"><i class="fa fa-circle-o"></i> Suivi des taches</a></li>
               </ul>
             </li>
             <li class="treeview">

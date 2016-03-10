@@ -46,6 +46,8 @@ Route::group(['middleware' => 'web'], function () {
 		Route::get('contrat/getByDep/{iddep?}', 'ContratController@getByDep');
 		Route::get('contrat/getByClient/{idclient?}', 'ContratController@getByClient');
 		Route::get('contrat/getByClientCollab/{idclient?}/{idcollab?}', 'ContratController@getByClientCollab');
+		Route::get('contrat/getAnneeContrat/{idcontrat?}', 'ContratController@getAnneeContrat');
+		
 
 		Route::resource('contrat_collaborateur', 'Contrat_collaborateurController');
 
@@ -65,7 +67,10 @@ Route::group(['middleware' => 'web'], function () {
 		Route::resource('region', 'RegionController');
 
 		Route::resource('tdbbyhours', 'TdbbyhoursController');
+		Route::get('tdbbyhours/getGraphHour/{idcontrat?}/{annee?}', 'TdbbyhoursController@getGraphHour');
 
+		Route::resource('tdbbytasks', 'TdbbytasksController');
+		Route::get('tdbbytasks/getGraphTask/{idcontrat?}/{annee?}', 'TdbbytasksController@getGraphTask');
     });
 });
 
